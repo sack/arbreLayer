@@ -8,7 +8,7 @@ public void mousePressed() {
   else {
     growers.clear();
      
-  background(0);
+   background(0);
   
    image(bgstars,0,0);
    image(bg,0,0);
