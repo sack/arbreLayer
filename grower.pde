@@ -21,11 +21,11 @@ class Grower {
     lastyadjust = -1;
     //minimumsize = (40 + (round(random(-20, 10))));
     
-    minimumsize = (map(mouseX, 0, width, 10, 100));
+    minimumsize = (map(height-userHead.y, 0, height, 10, 100));
     println("minimumsize" + minimumsize);
     sizecount = 0;
     
-    branchchance = (ceil(map(mouseY, 0, height, 1, 20)));
+    branchchance = (ceil(map(userLeft.x-userRight.x, 0, width, 1, 25)));
     
     println("branchchance" + branchchance);
   }
@@ -64,16 +64,24 @@ class Grower {
 
   void checkBranchChance() {
     if (this.size < 3) {
-      branchchance = 15;
+      //branchchance = 15;
+          branchchance = (ceil(map(userLeft.x-userRight.x, 0, width, 1, 15)));
+
     }
     if (this.size < 2.5) {
-      branchchance = 20;
+     // branchchance = 20;
+          branchchance = (ceil(map(userLeft.x-userRight.x, 0, width, 1, 20)));
+
     }
     if (this.size < 2) {
-      branchchance = 25;
+     // branchchance = 25;
+          branchchance = (ceil(map(userLeft.x-userRight.x, 0, width, 1, 25)));
+
     }
     if (this.size < 1.6) {
-      branchchance = 50;
+     // branchchance = 50;
+          branchchance = (ceil(map(userLeft.x-userRight.x, 0, width, 1, 50)));
+
     }
   }
 
