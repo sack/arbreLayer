@@ -1,3 +1,4 @@
+int transparency1=127;
 
 public void mousePressed() {
   if (mouseButton == LEFT) {
@@ -8,18 +9,21 @@ public void mousePressed() {
   else {
     growers.clear();
      
-   background(0);
-  
-   image(bgstars,0,0);
-   image(bg,0,0);
  
   }
 }
 
 //
-//public void keyPressed() {
-//  if (key == 'a') {
-//  }
-//  if (key == 'b') {
-//  }
-//}
+public void keyPressed() {
+ if (key == 'a') {
+    background(0);
+  tint(255,transparency1);
+  image(bgstars,0,0);
+   image(bg,0,0);
+  if(transparency1 < 0){
+    transparency1--;
+  }
+  
+}
+}
+

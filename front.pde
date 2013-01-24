@@ -13,7 +13,10 @@ class MyLayer extends Layer {
   }
 
   void setup() {
+    
+   //loadimage ou loadshape a remplacer pour image vecto
     front=loadImage("premierplan.png");
+    // s = loadShape("premierplan.svg");
   }
 
   void draw() {  
@@ -33,7 +36,11 @@ class MyLayer extends Layer {
     
   
     //ellipse (mouseX, mouseY, 5, 5);
+   
+   //image ou shape a remplacer pour image vecto
     image(front, 0, 0);
+   // shape(s, 0, 0);
+   
     // image(front,0,height-338);
     //shape(s, 0, 0, width,height);
     //--Particles
