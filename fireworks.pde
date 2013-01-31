@@ -16,17 +16,23 @@ class MyFireworks extends Layer {
   }
 
   void setup() {
-    //size(400, 400);
-    stroke(0);
-    strokeWeight(3);
-    fill(150);
-    smooth();
+   
   }
 
   void draw() {  
 
-    smooth();
+    //smooth();
     background(0, 0); // clear the background every time, but be transparent
+    
+      noStroke();
+    //Remplacer le random par un noise pour avoir un truc plus continue
+
+      fill (253, 251, 1, random(50, 255));
+    ellipse (800, 200, 3, 3);
+    fill (253, 251, 1, random(20, 255));
+    ellipse (300, 150, 5, 5);
+    
+    
 
     if ((userLeft.y<userHead.y) && (userRight.y<userHead.y) && (userRight.x-userLeft.x)<10 ) {
       particles = new Particle[NUM_PARTICLES];

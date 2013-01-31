@@ -5,7 +5,7 @@ import SimpleOpenNI.*;
 Vector growers;
 int c1, c2;
 
-PImage bgstars, bg, front, blink;
+PImage bgstars, bg, front, blink,back;
 
 AppletLayers layers;
 
@@ -38,11 +38,10 @@ void setup() {
 
 
   layers = new AppletLayers(this);
-  MyLayer m = new MyLayer(this);
   MyKinect k = new MyKinect(this);
   MyFireworks f = new MyFireworks(this);
   MyMagic c = new MyMagic(this);
-  layers.addLayer(m);
+  
   layers.addLayer(k);
  layers.addLayer(f);
   layers.addLayer(c);
@@ -59,22 +58,28 @@ void setup() {
   bgstars = loadImage("allstars.png");
   bg = loadImage("arriereplan.png");
   //blink = loadImage("blurstars-scintillantes.png");
-
+front=loadImage("premierplan.png");
 
   background(0);
 
   image(bgstars, 0, 0);
   image(bg, 0, 0);
+  back=get();
   //frameRate(25);
 }
 
 void draw() {
 
-
+  background(back);
   for (int i = 0; i < growers.size(); i++) {
     ((Grower)growers.get(i)).grow();
     ((Grower)growers.get(i)).display();
   }
+  
+  back=get();
+  
+  image(front, 0, 0);
+  
 }
 
 // paint method for Processing 1.5 or higher:

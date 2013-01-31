@@ -26,6 +26,10 @@ color partColor;
   void draw() {  
 
     background(0, 0); // clear the background every time, but be transparent
+    
+    
+    
+    
 
     particles.add(new Particle(new PVector(userLeft.x, userLeft.y)));
         particles.add(new Particle(new PVector(userRight.x, userRight.y)));
