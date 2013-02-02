@@ -1,4 +1,5 @@
 int transparency1=127;
+boolean debug=false;
 
 public void mousePressed() {
   if (mouseButton == LEFT) {
@@ -23,7 +24,9 @@ public void keyPressed() {
   if(transparency1 < 0){
     transparency1--;
   }
-  
-}
-}
+  }
+  if (key == 'd' || key == 'D')
+    debug=!debug;
+  }
+
 

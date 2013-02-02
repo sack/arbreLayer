@@ -22,12 +22,12 @@ class Grower {
     //minimumsize = (40 + (round(random(-20, 10))));
     
     minimumsize = (map(height-userHead.y, 0, height, 10, 100));
-    println("minimumsize" + minimumsize);
+  //  println("minimumsize" + minimumsize);
     sizecount = 0;
     
     branchchance = (ceil(map(userLeft.x-userRight.x, 0, width, 1, 25)));
     
-    println("branchchance" + branchchance);
+   // println("branchchance" + branchchance);
   }
 
   void grow() {

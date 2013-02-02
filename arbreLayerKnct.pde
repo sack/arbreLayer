@@ -35,16 +35,14 @@ void setup() {
   // enable skeleton generation for all joints
   context.enableUser(SimpleOpenNI.SKEL_PROFILE_ALL);
 
-
-
-  layers = new AppletLayers(this);
-  MyKinect k = new MyKinect(this);
-  MyFireworks f = new MyFireworks(this);
-  MyMagic c = new MyMagic(this);
+ //layers = new AppletLayers(this);
+ // MyKinect k = new MyKinect(this);
+  //MyFireworks f = new MyFireworks(this);
+  //MyMagic c = new MyMagic(this);
   
-  layers.addLayer(k);
- layers.addLayer(f);
-  layers.addLayer(c);
+  //layers.addLayer(k);
+ //layers.addLayer(f);
+  //layers.addLayer(c);
   //--
 
   //--
@@ -65,12 +63,14 @@ front=loadImage("premierplan.png");
   image(bgstars, 0, 0);
   image(bg, 0, 0);
   back=get();
-  //frameRate(25);
+  frameRate(120);
+  particles = new ArrayList<Particle>();
 }
 
 void draw() {
 
   background(back);
+  
   for (int i = 0; i < growers.size(); i++) {
     ((Grower)growers.get(i)).grow();
     ((Grower)growers.get(i)).display();
@@ -78,8 +78,17 @@ void draw() {
   
   back=get();
   
-  image(front, 0, 0);
+ 
   
+  
+  kinectDisplay();
+  fireworksDisplay();
+  
+  
+  image(front, 0, 0);
+  if (debug){
+    text(frameRate,20,20);
+  }
 }
 
 // paint method for Processing 1.5 or higher:
