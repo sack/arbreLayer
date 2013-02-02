@@ -1,4 +1,3 @@
-import com.nootropic.processing.layers.*;
 import java.util.Vector;
 import SimpleOpenNI.*;
 
@@ -6,8 +5,6 @@ Vector growers;
 int c1, c2;
 
 PImage bgstars, bg, front, blink,back;
-
-AppletLayers layers;
 
 
 SimpleOpenNI  context;
@@ -87,18 +84,7 @@ void draw() {
   
   image(front, 0, 0);
   if (debug){
-    text(frameRate,20,20);
-  }
-}
-
-// paint method for Processing 1.5 or higher:
-void paint(java.awt.Graphics g) {
-  // This method MUST be present in your sketch for layers to be rendered!
-  if (layers != null) {
-    layers.paint(this);
-  } 
-  else {
-    super.paint(g);
+    text("fps : "+frameRate+ "Generation de "+growers.size()+ " plantes",20,20);
   }
 }
 
