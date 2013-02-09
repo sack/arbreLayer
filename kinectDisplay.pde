@@ -22,8 +22,8 @@ void kinectDisplay() {
       //ellipse(userHead.x, userHead.y, 8, 8);
       
    fill (253, 251, 1, random(20, 255));
-   ellipse(userLeft.x, userLeft.y, 5, 5);
-   ellipse(userRight.x, userRight.y, 5, 5);
+   ellipse(userLeft.x, userLeft.y, 15, 15);
+   ellipse(userRight.x, userRight.y, 15, 15);
 
       particles.add(new Particle(new PVector(userLeft.x, userLeft.y)));
       particles.add(new Particle(new PVector(userRight.x, userRight.y)));
@@ -32,7 +32,7 @@ void kinectDisplay() {
 
 
       //si on est sur la tete
-      if ((userLeft.y<userHead.y) && (userRight.y<userHead.y) && (userRight.x-userLeft.x)<10 ) {
+      if ((userLeft.y<userHead.y) && (userRight.y<userHead.y) && (userRight.x-userLeft.x)<20 ) {
         growers.add(new Grower(userHead.x, height, 20));
       }
     }

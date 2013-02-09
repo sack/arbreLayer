@@ -2,9 +2,8 @@ import java.util.Vector;
 import SimpleOpenNI.*;
 
 Vector growers;
-int c1, c2;
 
-PImage bgstars, bg, front, blink,back;
+PImage bgstars, bg, front, blink, back;
 
 
 SimpleOpenNI  context;
@@ -14,12 +13,20 @@ PVector userHead = new PVector();
 PVector userLeft = new PVector();
 PVector userRight = new PVector();
 
+String mode;
+boolean fade=false;
+boolean fadein=true;
+int aIn=0;
+int numBubbles = 300;
+ArrayList balls;
 
 void setup() {
 
   size(1280, 800);
   context = new SimpleOpenNI(this);
   context.setMirror(true);
+  
+  balls = new ArrayList();
 
   // enable depthMap generation 
   if (context.enableDepth() == false)
@@ -32,20 +39,6 @@ void setup() {
   // enable skeleton generation for all joints
   context.enableUser(SimpleOpenNI.SKEL_PROFILE_ALL);
 
- //layers = new AppletLayers(this);
- // MyKinect k = new MyKinect(this);
-  //MyFireworks f = new MyFireworks(this);
-  //MyMagic c = new MyMagic(this);
-  
-  //layers.addLayer(k);
- //layers.addLayer(f);
-  //layers.addLayer(c);
-  //--
-
-  //--
-  c1 = 0x8C8085;
-  c2 = 0xE6E5E1;
-  // gradientBackground(c1, c2);
   //background(0);
   growers = new Vector();
   smooth();
@@ -53,7 +46,7 @@ void setup() {
   bgstars = loadImage("allstars.png");
   bg = loadImage("arriereplan.png");
   //blink = loadImage("blurstars-scintillantes.png");
-front=loadImage("premierplan.png");
+  front=loadImage("premierplan.png");
 
   background(0);
 
@@ -66,25 +59,32 @@ front=loadImage("premierplan.png");
 
 void draw() {
 
-  background(back);
+  if (mode=="debut") {
+      
+    animDebut();
   
-  for (int i = 0; i < growers.size(); i++) {
-    ((Grower)growers.get(i)).grow();
-    ((Grower)growers.get(i)).display();
-  }
-  
-  back=get();
-  
- 
-  
-  
-  kinectDisplay();
-  fireworksDisplay();
-  
-  
-  image(front, 0, 0);
-  if (debug){
-    text("fps : "+frameRate+ "Generation de "+growers.size()+ " plantes",20,20);
+  }else if (mode=="efface") {
+      animEfface();
+  }else {
+
+    background(back);
+
+    for (int i = 0; i < growers.size(); i++) {
+      ((Grower)growers.get(i)).grow();
+      ((Grower)growers.get(i)).display();
+    }
+
+    back=get();
+
+
+    kinectDisplay();
+    fireworksDisplay();
+
+
+    image(front, 0, 0);
+    if (debug) {
+      text("fps : "+frameRate+ "Generation de "+growers.size()+ " plantes", 20, 20);
+    }
   }
 }
 
